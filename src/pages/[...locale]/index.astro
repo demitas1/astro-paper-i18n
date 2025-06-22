@@ -23,7 +23,9 @@ export const getStaticPaths = (async () =>
 
 const { locale = DEFAULT_LOCALE } = Astro.params;
 
-const posts = await getPostsByLocale(locale);
+const posts = await getPostsByLocale(locale, {
+  draft: import.meta.env.DEV && !process.env.HIDE_DRAFTS,
+});
 const t = translateFor(Astro.currentLocale);
 
 const sortedPosts = getSortedPosts(posts);

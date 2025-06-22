@@ -5,6 +5,7 @@
   "private": false,
   "scripts": {
     "dev": "astro dev",
+    "dev:prod": "HIDE_DRAFTS=true astro dev",
     "build": "astro build && pagefind --site dist && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "sync": "astro sync",

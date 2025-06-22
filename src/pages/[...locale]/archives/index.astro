@@ -32,7 +32,7 @@ export async function getStaticPaths() {
 const { locale = DEFAULT_LOCALE } = Astro.params;
 
 const postsByLocale = await getPostsGroupedByLocale({
-  draft: false,
+  draft: import.meta.env.DEV && !process.env.HIDE_DRAFTS, // Include drafts in development mode unless HIDE_DRAFTS is set
   allowedLocales: SUPPORTED_LOCALES,
 });
 

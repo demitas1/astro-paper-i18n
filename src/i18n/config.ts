@@ -2,6 +2,7 @@ import type { I18nStrings } from "./types";
 import ARLocale from "./locales/ar";
 import ENLocale from "./locales/en";
 import CNLocale from "./locales/zh";
+import JALocale from "./locales/ja";
 
 export type LocaleProfile = {
   name: string;
@@ -29,6 +30,13 @@ export const localeToProfile = {
     langTag: "zh-CN",
     direction: "ltr",
     googleFontName: "Noto+Sans+SC",
+  },
+  ja: {
+    name: "日本語",
+    messages: JALocale,
+    langTag: "ja-JP",
+    direction: "ltr",
+    googleFontName: "Noto+Sans+JP",
   },
   en: {
     name: "English",
