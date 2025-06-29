@@ -1,76 +1,74 @@
 ---
 author: Sat Naing
 pubDatetime: 2022-09-25T15:20:35Z
-title: Customizing AstroPaper theme color schemes
+title: AstroPaperテーマのカラースキームのカスタマイズ
 featured: false
 draft: false
 tags:
   - color-schemes
   - docs
-description:
-  How you can enable/disable light & dark mode; and customize color schemes
-  of AstroPaper theme.
+description: ライト＆ダークモードの有効化/無効化方法と、AstroPaperテーマのカラースキームのカスタマイズ方法について説明します。
 ---
 
-This post will explain how you can enable/disable light & dark mode for the website. Moreover, you'll learn how you can customize color schemes of the entire website.
+この投稿では、ウェブサイトのライトモードとダークモードを有効/無効にする方法を説明します。さらに、ウェブサイト全体のカラースキームをカスタマイズする方法についても学びます。
 
-## Table of contents
+## 目次
 
-## Enable/disable light & dark mode
+## ライト＆ダークモードの有効化/無効化
 
-AstroPaper theme will include light and dark mode by default. In other words, there will be two color schemes\_ one for light mode and another for dark mode. This default behavior can be disabled in SITE configuration object of the `src/config.ts` file.
+AstroPaperテーマはデフォルトでライトモードとダークモードを含みます。つまり、ライトモード用とダークモード用の2つのカラースキームがあります。この初期設定の動作は、`src/config.ts`ファイルのSITE設定オブジェクトで無効にすることができます。
 
 ```js
-// file: src/config.ts
+// ファイル: src/config.ts
 export const SITE = {
   website: "https://astro-paper.pages.dev/",
   author: "Sat Naing",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
   title: "AstroPaper",
   ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true, // true by default
+  lightAndDarkMode: true, // デフォルトはtrue
   postPerPage: 3,
 };
 ```
 
-To disable `light & dark mode` set `SITE.lightAndDarkMode` to `false`.
+`ライト＆ダークモード`を無効にするには、`SITE.lightAndDarkMode`を`false`に設定します。
 
-## Choose primary color scheme
+## プライマリカラースキームの選択
 
-By default, if we disable `SITE.lightAndDarkMode`, we will only get system's prefers-color-scheme.
+デフォルトでは、`SITE.lightAndDarkMode`を無効にすると、システムのprefers-color-schemeのみが適用されます。
 
-Thus, to choose primary color scheme instead of prefers-color-scheme, we have to set color scheme in the primaryColorScheme variable inside `public/toggle-theme.js`.
+そのため、prefers-color-schemeの代わりにプライマリカラースキームを選択するには、`public/toggle-theme.js`内のprimaryColorScheme変数でカラースキームを設定する必要があります。
 
 ```js
-/* file: public/toggle-theme.js */
+/* ファイル: public/toggle-theme.js */
 const primaryColorScheme = ""; // "light" | "dark"
 
-// Get theme data from local storage
+// ローカルストレージからテーマデータを取得
 const currentTheme = localStorage.getItem("theme");
 
-// other codes etc...
+// その他のコード等...
 ```
 
-The **primaryColorScheme** variable can hold two values\_ `"light"`, `"dark"`. You can leave the empty string (default) if you don't want to specify the primary color scheme.
+**primaryColorScheme**変数は`"light"`、`"dark"`の2つの値を持つことができます。プライマリカラースキームを指定しない場合は、空の文字列（デフォルト）のままにすることができます。
 
-- `""` - system's prefers-color-scheme. (default)
-- `"light"` - use light mode as primary color scheme.
-- `"dark"` - use dark mode as primary color scheme.
+- `""` - システムのprefers-color-scheme（デフォルト）
+- `"light"` - ライトモードをプライマリカラースキームとして使用
+- `"dark"` - ダークモードをプライマリカラースキームとして使用
 
-<details><summary>Why 'primaryColorScheme' is not inside config.ts?</summary>
+<details><summary>なぜ'primaryColorScheme'はconfig.tsの中にないのですか？</summary>
 
-> To avoid color flickering on page reload, we have to place the toggle-switch JavaScript codes as early as possible when the page loads. It solves the problem of flickering, but as a trade-off, we cannot use ESM imports anymore.
+> ページ再読み込み時の色のちらつきを避けるため、トグルスイッチのJavaScriptコードをページ読み込み時にできるだけ早く配置する必要があります。これはちらつきの問題を解決しますが、トレードオフとしてESMインポートが使用できなくなります。
 
-[Click here](https://docs.astro.build/en/reference/directives-reference/#isinline) to know more about Astro's `is:inline` script.
+Astroの`is:inline`スクリプトについて詳しくは[こちらをクリック](https://docs.astro.build/en/reference/directives-reference/#isinline)してください。
 
 </details>
 
-## Customize color schemes
+## カラースキームのカスタマイズ
 
-Both light & dark color schemes of AstroPaper theme can be customized. You can do this in `src/styles/base.css` file.
+AstroPaperテーマのライトモードとダークモードの両方のカラースキームをカスタマイズできます。これは`src/styles/base.css`ファイルで行うことができます。
 
 ```css
-/* file: src/styles/base.css */
+/* ファイル: src/styles/base.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,30 +91,30 @@ Both light & dark color schemes of AstroPaper theme can be customized. You can d
     --color-card-muted: 89, 107, 129;
     --color-border: 59, 70, 85;
   }
-  /* other styles */
+  /* その他のスタイル */
 }
 ```
 
-In AstroPaper theme, `:root` and `html[data-theme="light"]` selectors are used as the light color scheme and `html[data-theme="dark"]` is used the dark color scheme. If you want to customize your custom color scheme, you have to specify your light color scheme inside `:root`,`html[data-theme="light"]` and dark color scheme inside `html[data-theme="dark"]`.
+AstroPaperテーマでは、`:root`と`html[data-theme="light"]`セレクタがライトカラースキームとして使用され、`html[data-theme="dark"]`がダークカラースキームとして使用されます。カスタムカラースキームをカスタマイズする場合は、ライトカラースキームを`:root`、`html[data-theme="light"]`の中に、ダークカラースキームを`html[data-theme="dark"]`の中に指定する必要があります。
 
-Colors are declared in CSS custom property (CSS Variable) notation. Color property values are written in rgb values. (Note: instead of `rgb(40, 39, 40)`, only specify `40, 39, 40`)
+色はCSS カスタムプロパティ（CSS変数）記法で宣言されます。カラープロパティ値はrgb値で記述されます。（注：`rgb(40, 39, 40)`ではなく、`40, 39, 40`のみを指定）
 
-Here is the detail explanation of color properties.
+以下は、カラープロパティの詳細な説明です。
 
-| Color Property       | Definition & Usage                                         |
-| -------------------- | ---------------------------------------------------------- |
-| `--color-fill`       | Primary color of the website. Usually the main background. |
-| `--color-text-base`  | Secondary color of the website. Usually the text color.    |
-| `--color-accent`     | Accent color of the website. Link color, hover color etc.  |
-| `--color-card`       | Card, scrollbar and code background color (like `this`).   |
-| `--color-card-muted` | Card and scrollbar background color for hover state etc.   |
-| `--color-border`     | Border color. Especially used in horizontal row (hr)       |
+| カラープロパティ     | 定義と使用法                                                   |
+| -------------------- | -------------------------------------------------------------- |
+| `--color-fill`       | ウェブサイトのプライマリカラー。通常はメインの背景色。         |
+| `--color-text-base`  | ウェブサイトのセカンダリカラー。通常はテキストの色。           |
+| `--color-accent`     | ウェブサイトのアクセントカラー。リンクの色、ホバー時の色など。 |
+| `--color-card`       | カード、スクロールバー、コードの背景色（`このような`）。       |
+| `--color-card-muted` | ホバー状態などのカードとスクロールバーの背景色。               |
+| `--color-border`     | ボーダーの色。特に水平線（hr）で使用。                         |
 
-Here is an example of changing the light color scheme.
+以下は、ライトカラースキームを変更する例です。
 
 ```css
 @layer base {
-  /* lobster color scheme */
+  /* ロブスターカラースキーム */
   :root,
   html[data-theme="light"] {
     --color-fill: 246, 238, 225;
@@ -129,4 +127,4 @@ Here is an example of changing the light color scheme.
 }
 ```
 
-> Check out some [predefined color schemes](https://astro-paper.pages.dev/posts/predefined-color-schemes/) AstroPaper has already crafted for you.
+> AstroPaperが既に用意している[事前定義されたカラースキーム](https://astro-paper.pages.dev/posts/predefined-color-schemes/)をチェックしてください。

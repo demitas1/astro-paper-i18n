@@ -1,5 +1,5 @@
 ---
-title: Tailwind Typography Plugin
+title: Tailwind Typographyプラグイン
 author: Sat Naing
 pubDatetime: 2022-07-05T02:05:51Z
 featured: false
@@ -7,63 +7,62 @@ draft: false
 tags:
   - TypeScript
   - Astro
-description: "EXAMPLE POST: About Tailwind Typography Plugin and how you can use it effectively."
+description: "サンプル記事：Tailwind Typographyプラグインについてと、その効果的な使用方法"
 ---
 
-> This article is from [TailwindLabs](https://tailwindcss-typography.vercel.app/). I put this article to demonstrate how you can write blog posts/articles using AstroPaper theme.
+> この記事は[TailwindLabs](https://tailwindcss-typography.vercel.app/)からの引用です。AstroPaperテーマを使用してブログ記事/記事を書く方法を示すために、この記事を掲載しています。
 
-By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+デフォルトでは、Tailwindは段落、見出し、リストなどのすべてのデフォルトのブラウザスタイリングを削除します。これはアプリケーションUIを構築する際に、ユーザーエージェントスタイルを解除する時間を節約できるため非常に便利ですが、CMSやマークダウンファイルからのリッチテキストエディタのコンテンツをスタイリングしようとする場合、予想外で直感的ではありません。
 
-We get lots of complaints about it actually, with people regularly asking us things like:
+実際、以下のような質問を定期的に受けています：
 
-> Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
-> We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
+> なぜTailwindは`h1`要素のデフォルトスタイルを削除するのですか？これを無効にするにはどうすればよいですか？他のベーススタイルも失われるとはどういう意味ですか？
+> ご意見は理解していますが、単にベーススタイルを無効にすることが本当に望んでいることだとは考えていません。ダッシュボードUIで`p`要素を使用するたびに、煩わしいマージンを削除する必要はありません。そして、ブログ記事にユーザーエージェントスタイルを使用したいとは思わないでしょう - ひどい見た目ではなく、*素晴らしい*見た目にしたいはずです。
 
-The `@tailwindcss/typography` plugin is our attempt to give you what you _actually_ want, without any of the downsides of doing something stupid like disabling our base styles.
+`@tailwindcss/typography`プラグインは、ベーススタイルを無効にするような愚かな方法を取ることなく、実際に望んでいるものを提供しようとする試みです。
 
-It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
+このプラグインは新しい`prose`クラスを追加し、任意のプレーンなHTMLコンテンツに適用して、美しく整形されたドキュメントに変換することができます：
 
 ```html
 <article class="prose">
-  <h1>Garlic bread with cheese: What the science tells us</h1>
+  <h1>ガーリックチーズブレッド：科学が教えてくれること</h1>
   <p>
-    For years parents have espoused the health benefits of eating garlic bread
-    with cheese to their children, with the food earning such an iconic status
-    in our culture that kids will often dress up as warm, cheesy loaf for
-    Halloween.
+    長年、親たちは子供たちにガーリックチーズブレッドを食べることの健康上の利点を説いてきました。
+    この食べ物は私たちの文化で象徴的な地位を獲得し、子供たちはハロウィンの仮装で暖かいチーズパンの
+    コスチュームを着ることさえあります。
   </p>
   <p>
-    But a recent study shows that the celebrated appetizer may be linked to a
-    series of rabies cases springing up around the country.
+    しかし、最近の研究によると、この人気の前菜が全国で発生している一連の狂犬病症例と
+    関連している可能性があることが示されています。
   </p>
   <!-- ... -->
 </article>
 ```
 
-For more information about how to use the plugin and the features it includes, [read the documentation](https://github.com/tailwindcss/typography/blob/master/README.md).
+プラグインの使用方法と機能の詳細については、[ドキュメント](https://github.com/tailwindcss/typography/blob/master/README.md)をお読みください。
 
 ---
 
-## What to expect from here on out
+## これから何を期待できるか
 
-What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like **bold text**, unordered lists, ordered lists, code blocks, block quotes, _and even italics_.
+ここからは、プラグイン自体を実地テストするために書いた完全なナンセンスが続きます。**太字テキスト**、順序なしリスト、順序付きリスト、コードブロック、ブロッククォート、*そしてイタリック*まで、考えられるすべての合理的なタイポグラフィ要素が含まれています。
 
-It's important to cover all of these use cases for a few reasons:
+これらのユースケースをすべてカバーすることは、以下の理由で重要です：
 
-1. We want everything to look good out of the box.
-2. Really just the first reason, that's the whole point of the plugin.
-3. Here's a third pretend reason though a list with three items looks more realistic than a list with two items.
+1. すべてがデフォルトで良く見えるようにしたい。
+2. 実際には最初の理由だけです。それがプラグインの要点です。
+3. 3つ目の理由は見せかけですが、2つの項目よりも3つの項目のリストの方が現実的に見えます。
 
-Now we're going to try out another header style.
+次は別のヘッダースタイルを試してみましょう。
 
-### Typography should be easy
+### タイポグラフィは簡単であるべき
 
-So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.
+これがヘッダーです - 私たちの仕事が正しく行われていれば、かなり適切に見えるはずです。
 
-Something a wise person once told me about typography is:
+タイポグラフィについて、ある賢人が私に言ったことがあります：
 
-> Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.
-> It's probably important that images look okay here by default as well:
+> タイポグラフィは、あなたの作品がゴミのように見えないようにするために非常に重要です。良いものにすれば、悪くはならないでしょう。
+> デフォルトで画像も適切に見えることも重要でしょう：
 
 <figure>
   <img
@@ -71,50 +70,49 @@ Something a wise person once told me about typography is:
     alt=""
   />
   <figcaption>
-    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-    classical Latin literature from 45 BC, making it over 2000 years old.
+    一般的な認識とは異なり、Lorem Ipsumはただのランダムなテキストではありません。紀元前45年の古典ラテン文学に起源を持ち、2000年以上の歴史があります。
   </figcaption>
 </figure>
 
-Now I'm going to show you an example of an unordered list to make sure that looks good, too:
+では、順序なしリストの例を示して、それも良く見えることを確認しましょう：
 
-- So here is the first item in this list.
-- In this example we're keeping the items short.
-- Later, we'll use longer, more complex list items.
+- これがリストの最初の項目です。
+- この例では項目を短く保っています。
+- 後で、より長く複雑なリスト項目を使用します。
 
-And that's the end of this section.
+これでこのセクションは終わりです。
 
-## What if we stack headings?
+## 見出しを重ねるとどうなるか？
 
-### We should make sure that looks good, too.
+### それも良く見えることを確認しましょう。
 
-Sometimes you have headings directly underneath each other. In those cases you often have to undo the top margin on the second heading because it usually looks better for the headings to be closer together than a paragraph followed by a heading should be.
+時には見出しが直接重なることがあります。そのような場合、通常は2番目の見出しの上部マージンを解除する必要があります。見出し同士は、段落の後に続く見出しよりも近接している方が見栄えが良いからです。
 
-### When a heading comes after a paragraph …
+### 見出しが段落の後に来る場合…
 
-When a heading comes after a paragraph, we need a bit more space, like I already mentioned above. Now let's see what a more complex list would look like.
+見出しが段落の後に来る場合、すでに上で述べたように、もう少しスペースが必要です。では、より複雑なリストがどのように見えるか見てみましょう。
 
-- **I often do this thing where list items have headings.**
+- **リスト項目に見出しを付けることがよくあります。**
 
-  For some reason I think this looks cool which is unfortunate because it's pretty annoying to get the styles right.
+  なぜかこれがかっこいいと思っているのですが、スタイルを適切に設定するのが面倒なので残念です。
 
-  I often have two or three paragraphs in these list items, too, so the hard part is getting the spacing between the paragraphs, list item heading, and separate list items to all make sense. Pretty tough honestly, you could make a strong argument that you just shouldn't write this way.
+  これらのリスト項目には2つか3つの段落があることも多いので、段落間、リスト項目の見出し、そして個々のリスト項目間のスペーシングをすべて整合させるのが難しい部分です。正直なところかなり大変で、このような書き方はすべきではないという強い主張もできるでしょう。
 
-- **Since this is a list, I need at least two items.**
+- **これはリストなので、少なくとも2つの項目が必要です。**
 
-  I explained what I'm doing already in the previous list item, but a list wouldn't be a list if it only had one item, and we really want this to look realistic. That's why I've added this second list item so I actually have something to look at when writing the styles.
+  前のリスト項目で何をしているか説明しましたが、1つの項目だけではリストとは言えません。現実的な見た目にしたいのです。だからこそ、実際に見て確認できるように2つ目のリスト項目を追加しました。
 
-- **It's not a bad idea to add a third item either.**
+- **3つ目の項目を追加するのも悪くありません。**
 
-  I think it probably would've been fine to just use two items but three is definitely not worse, and since I seem to be having no trouble making up arbitrary things to type, I might as well include it.
+  2つの項目だけでも問題なかったかもしれませんが、3つあっても悪くはありません。任意のことを書き続けるのに苦労していないようなので、含めておきましょう。
 
-After this sort of list I usually have a closing statement or paragraph, because it kinda looks weird jumping right to a heading.
+このようなリストの後には通常、締めくくりの文や段落を入れます。見出しに直接移行するのは少し奇妙に見えるからです。
 
-## Code should look okay by default.
+## コードはデフォルトで適切に見えるべき。
 
-I think most people are going to use [highlight.js](https://highlightjs.org/) or [Prism](https://prismjs.com/) or something if they want to style their code blocks but it wouldn't hurt to make them look _okay_ out of the box, even with no syntax highlighting.
+コードブロックのスタイリングには、ほとんどの人が[highlight.js](https://highlightjs.org/)や[Prism](https://prismjs.com/)などを使用すると思いますが、構文ハイライトがなくても、デフォルトで*まあまあ*見えるようにしておくのは悪くありません。
 
-Here's what a default `tailwind.config.js` file looks like at the time of writing:
+これが執筆時点でのデフォルトの`tailwind.config.js`ファイルの例です：
 
 ```js
 module.exports = {
@@ -127,82 +125,70 @@ module.exports = {
 };
 ```
 
-Hopefully that looks good enough to you.
+これで十分見栄えが良いと思います。
 
-### What about nested lists?
+### ネストされたリストはどうでしょうか？
 
-Nested lists basically always look bad which is why editors like Medium don't even let you do it, but I guess since some of you goofballs are going to do it we have to carry the burden of at least making it work.
+ネストされたリストは基本的に見栄えが悪いため、Mediumのようなエディタではそれを許可していませんが、一部の人々がそれを使用するだろうということで、少なくとも機能するようにする必要があります。
 
-1. **Nested lists are rarely a good idea.**
-   - You might feel like you are being really "organized" or something but you are just creating a gross shape on the screen that is hard to read.
-   - Nested navigation in UIs is a bad idea too, keep things as flat as possible.
-   - Nesting tons of folders in your source code is also not helpful.
-2. **Since we need to have more items, here's another one.**
-   - I'm not sure if we'll bother styling more than two levels deep.
-   - Two is already too much, three is guaranteed to be a bad idea.
-   - If you nest four levels deep you belong in prison.
-3. **Two items isn't really a list, three is good though.**
-   - Again please don't nest lists if you want people to actually read your content.
-   - Nobody wants to look at this.
-   - I'm upset that we even have to bother styling this.
+1. **ネストされたリストはめったに良いアイデアではありません。**
+   - とても「整理された」感じがすると思うかもしれませんが、画面上で読みにくい形を作っているだけです。
+   - UIでのネストされたナビゲーションも悪いアイデアです。できるだけフラットに保ちましょう。
+   - ソースコードで大量のフォルダをネストするのも有用ではありません。
+2. **項目が必要なので、もう1つ追加します。**
+   - 2レベル以上深くスタイリングするかどうかはわかりません。
+   - 2つでも多すぎます。3つは間違いなく悪いアイデアです。
+   - 4レベル深くネストする人は刑務所行きです。
+3. **2つの項目は本当のリストとは言えません。3つなら良いでしょう。**
+   - 繰り返しますが、コンテンツを実際に読んでもらいたい場合は、リストをネストしないでください。
+   - 誰もこれを見たくありません。
+   - これをスタイリングする必要があることさえ不快です。
 
-The most annoying thing about lists in Markdown is that `<li>` elements aren't given a child `<p>` tag unless there are multiple paragraphs in the list item. That means I have to worry about styling that annoying situation too.
+マークダウンのリストで最も厄介なのは、リスト項目に複数の段落がない限り、`<li>`要素に子`<p>`タグが与えられないことです。つまり、この厄介な状況のスタイリングについても考慮しなければなりません。
 
-- **For example, here's another nested list.**
+- **例えば、ここにもう1つネストされたリストがあります。**
 
-  But this time with a second paragraph.
+  ただし今回は2つ目の段落があります。
 
-  - These list items won't have `<p>` tags
-  - Because they are only one line each
+  - これらのリスト項目には`<p>`タグがありません
+  - それぞれ1行だけだからです
 
-- **But in this second top-level list item, they will.**
+- **しかしこの2番目のトップレベルリスト項目では、`<p>`タグがあります。**
 
-  This is especially annoying because of the spacing on this paragraph.
+  この段落のスペーシングのため、特に厄介です。
 
-  - As you can see here, because I've added a second line, this list item now has a `<p>` tag.
+  - ご覧の通り、2行目を追加したため、このリスト項目には`<p>`タグがあります。
 
-    This is the second line I'm talking about by the way.
+    これが私が言及している2行目です。
 
-  - Finally here's another list item so it's more like a list.
+  - 最後にもう1つリスト項目を追加して、よりリストらしくしています。
 
-- A closing list item, but with no nested list, because why not?
+- ネストされたリストのない終わりのリスト項目です。なぜならそうしたいからです。
 
-And finally a sentence to close off this section.
+そして最後に、このセクションを締めくくる文です。
 
-## There are other elements we need to style
+## スタイリングが必要な他の要素もあります
 
-I almost forgot to mention links, like [this link to the Tailwind CSS website](https://tailwindcss.com). We almost made them blue but that's so yesterday, so we went with dark gray, feels edgier.
+[Tailwind CSSのウェブサイト](https://tailwindcss.com)へのリンクのようなリンクについて言及するのを忘れるところでした。青色にしようと考えましたが、それは時代遅れなので、よりエッジの効いたダークグレーを選びました。
 
-We even included table styles, check it out:
+テーブルのスタイルも含めました。確認してください：
 
-| Wrestler                | Origin       | Finisher           |
-| ----------------------- | ------------ | ------------------ |
-| Bret "The Hitman" Hart  | Calgary, AB  | Sharpshooter       |
-| Stone Cold Steve Austin | Austin, TX   | Stone Cold Stunner |
-| Randy Savage            | Sarasota, FL | Elbow Drop         |
-| Vader                   | Boulder, CO  | Vader Bomb         |
-| Razor Ramon             | Chuluota, FL | Razor's Edge       |
+| レスラー                                 | 出身地           | 必殺技                     |
+| ---------------------------------------- | ---------------- | -------------------------- |
+| ブレット "ヒットマン" ハート             | カルガリー, AB   | シャープシューター         |
+| ストーンコールド・スティーブ・オースチン | オースチン, TX   | ストーンコールド・スタナー |
+| ランディ・サベージ                       | サラソタ, FL     | エルボードロップ           |
+| ベイダー                                 | ボルダー, CO     | ベイダーボム               |
+| レイザー・ラモン                         | チュルオータ, FL | レイザーズエッジ           |
 
-We also need to make sure inline code looks good, like if I wanted to talk about `<span>` elements or tell you the good news about `@tailwindcss/typography`.
+インラインコードも適切に見えるようにする必要があります。`<span>`要素について話したり、`@tailwindcss/typography`についての良いニュースをお伝えしたりする場合など。
 
-### Sometimes I even use `code` in headings
+### 時には見出しでも`code`を使用します
 
-Even though it's probably a bad idea, and historically I've had a hard time making it look good. This _"wrap the code blocks in backticks"_ trick works pretty well though really.
+おそらく良くないアイデアで、歴史的に見栄えを良くするのに苦労してきましたが。この*「コードブロックをバッククォートで囲む」*トリックはかなりうまく機能します。
 
-Another thing I've done in the past is put a `code` tag inside of a link, like if I wanted to tell you about the [`tailwindcss/docs`](https://github.com/tailwindcss/docs) repository. I don't love that there is an underline below the backticks but it is absolutely not worth the madness it would require to avoid it.
+過去に行ったことの1つとして、[`tailwindcss/docs`](https://github.com/tailwindcss/docs)リポジトリについて説明する場合など、リンク内に`code`タグを配置することがあります。バッククォートの下に下線があるのは好きではありませんが、それを避けるために必要な狂気は価値がありません。
 
-#### We haven't used an `h4` yet
+#### まだ`h4`を使用していませんでした
 
-But now we have. Please don't use `h5` or `h6` in your content, Medium only supports two heading levels for a reason, you animals. I honestly considered using a `before` pseudo-element to scream at you if you use an `h5` or `h6`.
-
-We don't style them at all out of the box because `h4` elements are already so small that they are the same size as the body copy. What are we supposed to do with an `h5`, make it _smaller_ than the body copy? No thanks.
-
-### We still need to think about stacked headings though.
-
-#### Let's make sure we don't screw that up with `h4` elements, either.
-
-Phew, with any luck we have styled the headings above this text and they look pretty good.
-
-Let's add a closing paragraph here so things end with a decently sized block of text. I can't explain why I want things to end that way but I have to assume it's because I think things will look weird or unbalanced if there is a heading too close to the end of the document.
-
-What I've written here is probably long enough, but adding this final sentence can't hurt.
+しかし今使いました。コンテンツで`h5`や`h6`を使用しないでください。Mediumが2つの見出しレベルしかサポートしていないのには理由があります

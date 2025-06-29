@@ -2,100 +2,100 @@
 author: Sat Naing
 pubDatetime: 2022-09-23T04:58:53Z
 modDatetime: 2025-03-20T03:15:57.792Z
-title: How to configure AstroPaper theme
+title: AstroPaperテーマの設定方法
 slug: ja/how-to-configure-astropaper-theme
 featured: true
 draft: false
 tags:
   - configuration
   - docs
-description: How you can make AstroPaper theme absolutely yours.
+description: AstroPaperテーマを自分好みにカスタマイズする方法について
 ---
 
-AstroPaper is a highly customizable Astro blog theme. With AstroPaper, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.
+AstroPaperは高度にカスタマイズ可能なAstroブログテーマです。AstroPaperを使用すると、あらゆる要素を個人の好みに合わせてカスタマイズできます。この記事では、設定ファイルで簡単にカスタマイズする方法について説明します。
 
-## Table of contents
+## 目次
 
-## Configuring SITE
+## SITEの設定
 
-The important configurations resides in `src/config.ts` file. Within that file, you'll see the `SITE` object where you can specify your website's main configurations.
+重要な設定は`src/config.ts`ファイルにあります。このファイル内には、ウェブサイトのメイン設定を指定できる`SITE`オブジェクトがあります。
 
-During development, it's okay to leave `SITE.website` empty. But in production mode, you should specify your deployed url in `SITE.website` option since this will be used for canonical URL, social card URL etc.. which are important for SEO.
+開発中は`SITE.website`を空のままにしても問題ありません。ただし、本番環境では、正規URLやソーシャルカードURLなどSEOに重要な要素として使用されるため、`SITE.website`オプションにデプロイされたURLを指定する必要があります。
 
 ```js
-// file: src/config.ts
+// ファイル: src/config.ts
 export const SITE = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
+  website: "https://astro-paper.pages.dev/", // デプロイしたドメインに置き換えてください
   author: "Sat Naing",
   profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  desc: "ミニマルでレスポンシブ、SEOフレンドリーなAstroブログテーマ",
   title: "AstroPaper",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 4,
-  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
+  scheduledPostMargin: 15 * 60 * 1000, // 15分
   showArchives: true,
-  showBackButton: true, // show back button in post detail
+  showBackButton: true, // 投稿詳細で戻るボタンを表示
   editPost: {
      enabled: true,
-     text: "Suggest Changes",
+     text: "変更を提案",
      url: "https://github.com/satnaing/astro-paper/edit/main/",
   },
-  dynamicOgImage: true, // enable automatic dynamic og-image generation
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  timezone: "Asia/Bangkok", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  dynamicOgImage: true, // 動的OG画像生成を有効化
+  lang: "en", // HTMLのlangコード。空の場合デフォルトは"en"
+  timezone: "Asia/Bangkok", // デフォルトのグローバルタイムゾーン (IANAフォーマット)
 } as const;
 ```
 
-Here are SITE configuration options
+SITE設定オプションの説明：
 
-| Options               | Description                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `website`             | Your deployed website URL                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `author`              | Your name                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| `profile`             | Your personal/portfolio website URL which is used for better SEO. Put `null` or empty string `""` if you don't have any.                                                                                                                                                                                                                                                                                                          |
-| `desc`                | Your site description. Useful for SEO and social media sharing.                                                                                                                                                                                                                                                                                                                                                                   |
-| `title`               | Your site name                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `ogImage`             | Your default OG image for the site. Useful for social media sharing. OG images can be an external image URL or they can be placed under `/public` directory.                                                                                                                                                                                                                                                                      |
-| `lightAndDarkMode`    | Enable or disable `light & dark mode` for the website. If disabled, primary color scheme will be used. This option is enabled by default.                                                                                                                                                                                                                                                                                         |
-| `postPerIndex`        | The number of posts to be displayed at the home page under `Recent` section.                                                                                                                                                                                                                                                                                                                                                      |
-| `postPerPage`         | You can specify how many posts will be displayed in each posts page. (eg: if you set `SITE.postPerPage` to 3, each page will only show 3 posts per page)                                                                                                                                                                                                                                                                          |
-| `scheduledPostMargin` | In Production mode, posts with a future `pubDatetime` will not be visible. However, if a post's `pubDatetime` is within the next 15 minutes, it will be visible. You can set `scheduledPostMargin` if you don't like the default 15 minutes margin.                                                                                                                                                                               |
-| `showArchives`        | Determines whether to display the `Archives` menu (positioned between the `About` and `Search` menus) and its corresponding page on the site. This option is set to `true` by default.                                                                                                                                                                                                                                            |
-| `showBackButton`      | Determines whether to display the `Go back` button in each blog post.                                                                                                                                                                                                                                                                                                                                                             |
-| `editPost`            | This option allows users to suggest changes to a blog post by providing an edit link under blog post titles. This feature can be disabled by setting `SITE.editPost.enabled` to `false`.                                                                                                                                                                                                                                          |
-| `dynamicOgImage`      | This option controls whether to [generate dynamic og-image](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/) if no `ogImage` is specified in the blog post frontmatter. If you have many blog posts, you might want to disable this feature. See the [trade-off](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/#trade-off) for more details. |
-| `lang`                | Used as HTML ISO Language code in `<html lang"en">`. Default is `en`.                                                                                                                                                                                                                                                                                                                                                             |
-| `timezone`            | This option allows you to specify your timezone using the [IANA format](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Setting this ensures consistent timestamps across your localhost and deployed site, eliminating time differences.                                                                                                                                                                          |
+| オプション            | 説明                                                                                                                                                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `website`             | デプロイしたウェブサイトのURL                                                                                                                                                                                                                                      |
+| `author`              | あなたの名前                                                                                                                                                                                                                                                       |
+| `profile`             | SEO向上のために使用される個人/ポートフォリオウェブサイトのURL。持っていない場合は`null`または空文字列`""`を設定                                                                                                                                                    |
+| `desc`                | サイトの説明。SEOとソーシャルメディア共有に有用                                                                                                                                                                                                                    |
+| `title`               | サイト名                                                                                                                                                                                                                                                           |
+| `ogImage`             | サイトのデフォルトOG画像。ソーシャルメディア共有に有用。外部画像URLまたは`/public`ディレクトリ内の画像を使用可能                                                                                                                                                   |
+| `lightAndDarkMode`    | ウェブサイトの`ライト＆ダークモード`を有効/無効化。無効化すると主要カラースキームが使用される。デフォルトで有効                                                                                                                                                    |
+| `postPerIndex`        | ホームページの`Recent`セクションに表示される投稿数                                                                                                                                                                                                                 |
+| `postPerPage`         | 投稿ページごとに表示される投稿数を指定可能                                                                                                                                                                                                                         |
+| `scheduledPostMargin` | 本番環境では、将来の`pubDatetime`を持つ投稿は表示されません。ただし、投稿の`pubDatetime`が15分以内であれば表示されます。デフォルトの15分のマージンが好ましくない場合は`scheduledPostMargin`を設定できます                                                          |
+| `showArchives`        | `Archives`メニュー（`About`と`Search`メニューの間に配置）とそのページをサイトに表示するかどうかを決定。デフォルトで`true`                                                                                                                                          |
+| `showBackButton`      | 各ブログ投稿に`戻る`ボタンを表示するかどうかを決定                                                                                                                                                                                                                 |
+| `editPost`            | ブログ投稿タイトルの下に編集リンクを提供することで、ユーザーが投稿の変更を提案できる機能。`SITE.editPost.enabled`を`false`に設定することで無効化可能                                                                                                               |
+| `dynamicOgImage`      | ブログ投稿のフロントマターに`ogImage`が指定されていない場合に[動的OG画像を生成する](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/)かどうかを制御。多くのブログ投稿がある場合は、この機能を無効にすることをお勧めします |
+| `lang`                | `<html lang"en">`のHTML ISO言語コードとして使用。デフォルトは`en`                                                                                                                                                                                                  |
+| `timezone`            | [IANAフォーマット](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を使用してタイムゾーンを指定するオプション。これにより、ローカルホストとデプロイされたサイト間のタイムスタンプの一貫性が保たれ、時差が解消されます                                 |
 
-## Configuring logo or title
+## ロゴまたはタイトルの設定
 
-Prior to AstroPaper v5, you can update your site name/logo in `LOGO_IMAGE` object inside `src/config.ts` file. However, in AstroPaper v5, this option has been removed in favor of Astro's built-in SVG and Image components.
+AstroPaper v5以前では、`src/config.ts`ファイル内の`LOGO_IMAGE`オブジェクトでサイト名/ロゴを更新できました。しかし、AstroPaper v5では、AstroのビルトインSVGおよび画像コンポーネントを優先するため、このオプションは削除されました。
 
-![An arrow pointing at the website logo](https://res.cloudinary.com/noezectz/v1663911318/astro-paper/AstroPaper-logo-config_goff5l.png)
+![ウェブサイトのロゴを指す矢印](https://res.cloudinary.com/noezectz/v1663911318/astro-paper/AstroPaper-logo-config_goff5l.png)
 
-There are 3 options you can do:
+以下の3つのオプションがあります：
 
-### Option 1: SITE title text
+### オプション1：SITEタイトルテキスト
 
-This is the easiest option. You just have to update `SITE.title` in `src/config.ts` file.
+これは最も簡単なオプションです。`src/config.ts`ファイルの`SITE.title`を更新するだけです。
 
-### Option 2: Astro's SVG component
+### オプション2：AstroのSVGコンポーネント
 
-You might want to use this option if you want to use an SVG logo.
+SVGロゴを使用したい場合は、このオプションを使用するとよいでしょう。
 
-- First add an SVG inside `src/assets` directory. (eg: `src/assets/dummy-logo.svg`)
-- Then import that SVG inside `src/components/Header.astro`
+- まず、`src/assets`ディレクトリにSVGを追加します（例：`src/assets/dummy-logo.svg`）
+- 次に、`src/components/Header.astro`でそのSVGをインポートします
 
   ```astro
   ---
-  // other imports
+  // その他のインポート
   import DummyLogo from "@/assets/dummy-logo.svg";
   ---
   ```
 
-- Finally, replace `{SITE.title}` with imported logo.
+- 最後に、`{SITE.title}`をインポートしたロゴに置き換えます
 
   ```html
   <a
@@ -107,24 +107,24 @@ You might want to use this option if you want to use an SVG logo.
   </a>
   ```
 
-The best part of this approach is that you can customize your SVG styles as needed. In the example above, you can see how the SVG logo color can be inverted in dark mode.
+このアプローチの利点は、必要に応じてSVGのスタイルをカスタマイズできることです。上の例では、ダークモードでSVGロゴの色を反転させる方法を示しています。
 
-### Option 3: Astro's Image component
+### オプション3：Astroの画像コンポーネント
 
-If your logo is an image but not SVG, you can use Astro's Image component.
+ロゴがSVGではなく画像の場合は、Astroの画像コンポーネントを使用できます。
 
-- Add your logo inside `src/assets` directory. (eg: `src/assets/dummy-logo.png`)
-- Import `Image` and your logo in `src/components/Header.astro`
+- `src/assets`ディレクトリにロゴを追加します（例：`src/assets/dummy-logo.png`）
+- `src/components/Header.astro`で`Image`とロゴをインポートします
 
   ```astro
   ---
-  // other imports
+  // その他のインポート
   import { Image } from "astro:assets";
   import dummyLogo from "@/assets/dummy-logo.png";
   ---
   ```
 
-- Then, replace `{SITE.title}` with imported logo.
+- 次に、`{SITE.title}`をインポートしたロゴに置き換えます
 
   ```html
   <a
@@ -136,13 +136,13 @@ If your logo is an image but not SVG, you can use Astro's Image component.
   </a>
   ```
 
-With this approach, you can still adjust your image's appearance using CSS classes. However, this might not always fit what you want. If you need to display different logo images based on light or dark mode, check how light/dark icons are handled inside the `Header.astro` component.
+このアプローチでも、CSSクラスを使用して画像の外観を調整できます。ただし、必ずしも望む通りの結果にならない場合があります。ライトモードとダークモードで異なるロゴ画像を表示する必要がある場合は、`Header.astro`コンポーネント内のライト/ダークアイコンの処理方法を確認してください。
 
-## Configuring social links
+## ソーシャルリンクの設定
 
-You can configure social links in `SOCIALS` object inside `src/constants.ts`.
+`src/constants.ts`の`SOCIALS`オブジェクトでソーシャルリンクを設定できます。
 
-![An arrow pointing at social link icons](https://github.com/user-attachments/assets/8b895400-d088-442f-881b-02d2443e00cf)
+![ソーシャルリンクアイコンを指す矢印](https://github.com/user-attachments/assets/8b895400-d088-442f-881b-02d2443e00cf)
 
 ```ts
 export const SOCIALS = [
@@ -167,18 +167,18 @@ export const SOCIALS = [
   {
     name: "Mail",
     href: "mailto:yourmail@gmail.com",
-    linkTitle: `Send an email to ${SITE.title}`,
+    linkTitle: `${SITE.title}にメールを送る`,
     icon: IconMail,
   },
 ] as const;
 ```
 
-## Configuring share links
+## 共有リンクの設定
 
-You can configure share links in `SHARE_LINKS` object inside `src/constants.ts`.
+`src/constants.ts`の`SHARE_LINKS`オブジェクトで共有リンクを設定できます。
 
-![An arrow pointing at share link icons](https://github.com/user-attachments/assets/4f930b68-b625-45df-8c41-e076dd2b838e)
+![共有リンクアイコンを指す矢印](https://github.com/user-attachments/assets/4f930b68-b625-45df-8c41-e076dd2b838e)
 
-## Conclusion
+## まとめ
 
-This is the brief specification of how you can customize this theme. You can customize more if you know some coding. For customizing styles, please read [this article](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/). Thanks for reading.✌🏻
+これがこのテーマをカスタマイズする方法の簡単な説明です。コーディングの知識があれば、さらにカスタマイズすることができます。スタイルのカスタマイズについては、[この記事](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)をお読みください。ご覧いただきありがとうございます。✌🏻

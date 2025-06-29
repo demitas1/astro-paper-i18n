@@ -1,35 +1,34 @@
 ---
-title: "About"
+title: "このサイトについて"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+AstroPaperは、ミニマルでレスポンシブ、SEOに最適化されたAstroブログテーマです。[私の個人ブログ](https://satnaing.dev/blog)をベースにデザインし、制作しました。
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+このテーマは、すぐに使える形でアクセシビリティに配慮して作られています。ライトモードとダークモードがデフォルトでサポートされており、追加のカラースキームも設定可能です。
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+このテーマは自己文書化されています - つまり、このテーマの記事/投稿はドキュメントとしても活用できます。詳細については、ドキュメントをご覧ください。
 
 <div>
-  <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="コーディング開発のイラスト">
 </div>
 
-## Tech Stack
+## 技術スタック
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+このテーマは、バニラJavaScript（+ 型チェック用のTypeScript）と、一部のインタラクションにReactJSを使用して書かれています。スタイリングにはTailwindCSSを使用し、ブログコンテンツにはMarkdownを使用しています。
 
-## Features
+## 特徴
 
-Here are certain features of this site.
+このサイトには以下のような特徴があります：
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
+- 完全にレスポンシブでアクセシブル
+- SEOフレンドリー
+- ライト＆ダークモード
+- あいまい検索
+- 超高速なパフォーマンス
+- 下書き投稿
+- ページネーション
+- サイトマップ＆RSSフィード
+- 高度にカスタマイズ可能
 
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+このテーマが気に入った場合は、[リポジトリ](https://github.com/satnaing/astro-paper)にスター/貢献していただけます。
+また、[メール](mailto:contact@satnaing.dev)でフィードバックをいただくことも可能です。

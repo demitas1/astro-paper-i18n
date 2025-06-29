@@ -2,73 +2,73 @@
 author: Alberto Perdomo
 pubDatetime: 2024-09-08T20:58:52.737Z
 modDatetime: 2025-03-22T09:25:46.734Z
-title: How to add LaTeX Equations in Astro blog posts
+title: AstroブログポストでのLaTeX数式の追加方法
 tags:
   - docs
-description: Learn how to add LaTeX equations in Astro blog posts using Markdown, KaTeX, and remark/rehype plugins.
+description: Markdown、KaTeX、remark/rehypeプラグインを使用してAstroブログポストにLaTeX数式を追加する方法を学びます。
 ---
 
-This document demonstrates how to use LaTeX equations in your Markdown files for AstroPaper. LaTeX is a powerful typesetting system often used for mathematical and scientific documents.
+このドキュメントでは、AstroPaperのMarkdownファイルでLaTeX数式を使用する方法を説明します。LaTeXは数学や科学的文書によく使用される強力な組版システムです。
 
 <figure>
   <img
     src="https://images.pexels.com/photos/22690748/pexels-photo-22690748/free-photo-of-close-up-of-complicated-equations-written-on-a-blackboard.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    alt="Free Close-up of complex equations on a chalkboard, showcasing chemistry and math symbols. Stock Photo"
+    alt="黒板に書かれた複雑な方程式のクローズアップ。化学と数学の記号を示すフリー写真"
   />
   <figcaption class="text-center">
-    Photo by <a href="https://www.pexels.com/photo/close-up-of-complicated-equations-written-on-a-blackboard-22690748/">Vitaly Gariev</a>
+    写真提供: <a href="https://www.pexels.com/photo/close-up-of-complicated-equations-written-on-a-blackboard-22690748/">Vitaly Gariev</a>
   </figcaption>
 </figure>
 
-## Table of contents
+## 目次
 
-## Instructions
+## 手順
 
-In this section, you will find instructions on how to add support for LaTeX in your Markdown files for AstroPaper.
+このセクションでは、AstroPaperのMarkdownファイルでLaTeXのサポートを追加する方法を説明します。
 
-1. Install the necessary remark and rehype plugins by running:
+1. 必要なremarkとrehypeプラグインをインストールします：
 
    ```bash
    pnpm install rehype-katex remark-math katex
    ```
 
-2. Update the Astro configuration (`astro.config.ts`) to use the these plugins:
+2. これらのプラグインを使用するようにAstroの設定（`astro.config.ts`）を更新します：
 
    ```ts
-   // other imports
+   // その他のインポート
    import remarkMath from "remark-math";
    import rehypeKatex from "rehype-katex";
 
    export default defineConfig({
-     // other configs
+     // その他の設定
      markdown: {
        remarkPlugins: [
-         remarkMath, // <- new plugin
+         remarkMath, // <- 新しいプラグイン
          remarkToc,
          [remarkCollapse, { test: "Table of contents" }],
        ],
-       rehypePlugins: [rehypeKatex], // <- new plugin
+       rehypePlugins: [rehypeKatex], // <- 新しいプラグイン
        shikiConfig: {
-         // For more themes, visit https://shiki.style/themes
+         // その他のテーマについては https://shiki.style/themes を参照
          themes: { light: "min-light", dark: "night-owl" },
          wrap: true,
        },
      },
-     // other configs
+     // その他の設定
    });
    ```
 
-3. Import KaTeX CSS in the main layout file `src/layouts/Layout.astro`
+3. メインレイアウトファイル `src/layouts/Layout.astro` でKaTeX CSSをインポートします：
 
    ```astro
    ---
    import { SITE } from "@config";
 
-   // astro code
+   // astroコード
    ---
 
    <!doctype html>
-   <!-- others... -->
+   <!-- その他... -->
    <script is:inline src="/toggle-theme.js"></script>
 
    <link
@@ -81,55 +81,55 @@ In this section, you will find instructions on how to add support for LaTeX in y
    </body>
    ```
 
-4. As the last step, add a text-color for `katex` in `src/styles/typography.css`.
+4. 最後のステップとして、`src/styles/typography.css`に`katex`のテキストカラーを追加します：
 
    ```css
    @plugin '@tailwindcss/typography';
 
    @layer base {
-     /* other classes */
+     /* その他のクラス */
 
-     /* Katex text color */
+     /* Katexテキストカラー */
      .prose .katex-display {
        @apply text-foreground;
      }
 
-     /* ===== Code Blocks & Syntax Highlighting ===== */
-     /* other classes */
+     /* ===== コードブロックと構文ハイライト ===== */
+     /* その他のクラス */
    }
    ```
 
-And _voilà_, this setup allows you to write LaTeX equations in your Markdown files, which will be rendered properly when the site is built. Once you do it, the rest of the document will appear rendered correctly.
+これで完了です。この設定により、Markdownファイルに記述したLaTeX数式がサイトのビルド時に適切にレンダリングされます。設定が完了すると、以下のドキュメントが正しくレンダリングされて表示されます。
 
 ---
 
-## Inline Equations
+## インライン数式
 
-Inline equations are written between single dollar signs `$...$`. Here are some examples:
+インライン数式は単一のドル記号 `$...$` で囲んで記述します。以下に例を示します：
 
-1. The famous mass-energy equivalence formula: `$E = mc^2$`
-2. The quadratic formula: `$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$`
-3. Euler's identity: `$e^{i\pi} + 1 = 0$`
+1. 有名な質量-エネルギー等価式：`$E = mc^2$`
+2. 二次方程式の解の公式：`$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$`
+3. オイラーの等式：`$e^{i\pi} + 1 = 0$`
 
 ---
 
-## Block Equations
+## ブロック数式
 
-For more complex equations or when you want the equation to be displayed on its own line, use double dollar signs `$$...$$`:
+より複雑な数式や、独立した行に数式を表示したい場合は、二重のドル記号 `$$...$$` を使用します：
 
-The Gaussian integral:
+ガウス積分：
 
 ```bash
 $$ \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} $$
 ```
 
-The definition of the Riemann zeta function:
+リーマンのゼータ関数の定義：
 
 ```bash
 $$ \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} $$
 ```
 
-Maxwell's equations in differential form:
+マクスウェル方程式の微分形式：
 
 ```bash
 $$
@@ -144,11 +144,11 @@ $$
 
 ---
 
-## Using Mathematical Symbols
+## 数学記号の使用
 
-LaTeX provides a wide range of mathematical symbols:
+LaTeXは幅広い数学記号を提供します：
 
-- Greek letters: `$\alpha$`, `$\beta$`, `$\gamma$`, `$\delta$`, `$\epsilon$`, `$\pi$`
-- Operators: `$\sum$`, `$\prod$`, `$\int$`, `$\partial$`, `$\nabla$`
-- Relations: `$\leq$`, `$\geq$`, `$\approx$`, `$\sim$`, `$\propto$`
-- Logical symbols: `$\forall$`, `$\exists$`, `$\neg$`, `$\wedge$`, `$\vee$`
+- ギリシャ文字：`$\alpha$`、`$\beta$`、`$\gamma$`、`$\delta$`、`$\epsilon$`、`$\pi$`
+- 演算子：`$\sum$`、`$\prod$`、`$\int$`、`$\partial$`、`$\nabla$`
+- 関係演算子：`$\leq$`、`$\geq$`、`$\approx$`、`$\sim$`、`$\propto$`
+- 論理記号：`$\forall$`、`$\exists$`、`$\neg$`、`$\wedge$`、`$\vee$`

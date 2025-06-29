@@ -1,5 +1,5 @@
 ---
-title: Example Draft Post
+title: 下書き投稿の例
 author: Sat Naing
 pubDatetime: 2022-06-06T04:06:31Z
 slug: ja/example-draft-post
@@ -8,14 +8,11 @@ draft: true
 tags:
   - TypeScript
   - Astro
-description:
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel
-  fringilla est
+description: これは下書きの投稿のサンプルです。この投稿は長い説明文のデモンストレーションとして使用されています。実際のコンテンツはここに記載されます。
 ---
 
-Users cannot see this post because it is in draft.
+この投稿は下書きのため、ユーザーには表示されません。
 
-## Motivation
+## 動機
 
-rec 1
+記録 1

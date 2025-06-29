@@ -2,26 +2,24 @@
 author: Sat Naing
 pubDatetime: 2022-09-26T12:13:24Z
 modDatetime: 2024-01-04T09:09:06Z
-title: Predefined color schemes
+title: 事前定義されたカラースキーム
 slug: ja/predefined-color-schemes
 featured: false
 draft: false
 tags:
   - color-schemes
-description:
-  Some of the well-crafted, predefined color schemes for AstroPaper blog
-  theme.
+description: AstroPaperブログテーマ用に丁寧に作り込まれた事前定義のカラースキームの紹介
 ---
 
-I've crafted some predefined color schemes for this AstroPaper blog theme. You can replace these color schemes with the original ones.
+このAstroPaperブログテーマ用に、いくつかの事前定義されたカラースキームを作成しました。これらのカラースキームでオリジナルのものを置き換えることができます。
 
-If you don't know how you can configure color schemes, check [this blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/).
+カラースキームの設定方法がわからない場合は、[このブログ記事](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)をご確認ください。
 
-## Table of contents
+## 目次
 
-## Light color schemes
+## ライトカラースキーム
 
-Light color scheme has to be defined using the css selector `:root` and `html[data-theme="light"]`.
+ライトカラースキームは、CSSセレクター`:root`と`html[data-theme="light"]`を使用して定義する必要があります。
 
 ### Lobster
 
@@ -68,11 +66,11 @@ html[data-theme="light"] {
 }
 ```
 
-## Dark color schemes
+## ダークカラースキーム
 
-Dark color scheme has to be defined as `html[data-theme="dark"]`.
+ダークカラースキームは`html[data-theme="dark"]`として定義する必要があります。
 
-### AstroPaper 1 original Dark Theme
+### AstroPaper 1 オリジナルダークテーマ
 
 ![AstroPaper 1 default dark theme](https://user-images.githubusercontent.com/53733092/215769153-13b0ad8d-5ba2-44b1-af06-e5ae61293f62.png)
 
@@ -114,7 +112,7 @@ html[data-theme="dark"] {
 }
 ```
 
-### Astro dark (High Contrast)
+### Astro dark (ハイコントラスト)
 
 ![astro-dark-color-scheme](https://user-images.githubusercontent.com/53733092/215680520-59427bb0-f4cb-48c0-bccc-f182a428d72d.svg)
 
@@ -128,13 +126,13 @@ html[data-theme="dark"] {
 }
 ```
 
-### Astro dark (New default dark theme in AstroPaper 2)
+### Astro dark (AstroPaper 2の新しいデフォルトダークテーマ)
 
 ![new dark color scheme - low contrast](https://user-images.githubusercontent.com/53733092/215772856-d5b7ae35-ddaa-4ed6-b0bf-3fa5dbcf834c.png)
 
 ```css
 html[data-theme="dark"] {
-  --background: #212737; /* lower contrast background */
+  --background: #212737; /* より低コントラストの背景 */
   --foreground: #eaedf3;
   --accent: #ff6b01;
   --muted: #8a3302;
@@ -142,7 +140,7 @@ html[data-theme="dark"] {
 }
 ```
 
-### Astro Deep Purple (New dark theme in AstroPaper 3)
+### Astro Deep Purple (AstroPaper 3の新しいダークテーマ)
 
 ![AstroPaper v3 new theme](https://github.com/satnaing/astro-paper/assets/53733092/c8b5d7e1-a3bc-4852-a5ad-4abf7b3cec79)
 
@@ -156,7 +154,7 @@ html[data-theme="dark"] {
 }
 ```
 
-### AstroPaper v4 Special (New dark theme in AstroPaper 4)
+### AstroPaper v4 Special (AstroPaper 4の新しいダークテーマ)
 
 ![AstroPaper v4 new theme](https://github.com/satnaing/astro-paper/assets/53733092/66eb74dc-7a0e-4f2e-982d-25f5c443b25a)
 

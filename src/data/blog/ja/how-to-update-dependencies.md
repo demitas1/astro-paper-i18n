@@ -1,5 +1,5 @@
 ---
-title: How to update dependencies of AstroPaper
+title: AstroPaperの依存関係を更新する方法
 author: Sat Naing
 pubDatetime: 2023-07-20T15:33:05.569Z
 slug: ja/how-to-update-dependencies
@@ -8,107 +8,107 @@ draft: false
 ogImage: ../../../assets/images/forrest-gump-quote.png
 tags:
   - FAQ
-description: How to update project dependencies and AstroPaper template.
+description: プロジェクトの依存関係とAstroPaperテンプレートを更新する方法。
 ---
 
-Updating the dependencies of a project can be tedious. However, neglecting to update project dependencies is not a good idea either 😬. In this post, I will share how I usually update my projects, focusing on AstroPaper as an example. Nonetheless, these steps can be applied to other js/node projects as well.
+プロジェクトの依存関係を更新することは面倒な作業かもしれません。しかし、依存関係の更新を怠ることも良くありません😬。この記事では、AstroPaperを例に、私が普段プロジェクトをどのように更新しているかを共有します。ただし、これらのステップは他のJavaScript/Nodeプロジェクトにも適用できます。
 
-![Forrest Gump Fake Quote](@/assets/images/forrest-gump-quote.png)
+![フォレスト・ガンプの偽の引用](@/assets/images/forrest-gump-quote.png)
 
-## Table of contents
+## 目次
 
-## Updating Package Dependencies
+## パッケージの依存関係を更新する
 
-There are several ways to update dependencies, and I've tried various methods to find the easiest path. One way to do it is by manually updating each package using `npm install package-name@latest`. This method is the most straightforward way of updating. However, it may not be the most efficient option.
+依存関係を更新する方法は複数あり、最も簡単な方法を見つけるためにさまざまな方法を試してきました。一つの方法は、`npm install package-name@latest`を使用して各パッケージを手動で更新することです。この方法は最も直接的な更新方法ですが、最も効率的な選択肢ではないかもしれません。
 
-My recommended way of updating dependencies is by using the [npm-check-updates package](https://www.npmjs.com/package/npm-check-updates). There's a good [article](https://www.freecodecamp.org/news/how-to-update-npm-dependencies/) from freeCodeCamp about that, so I won't be explaining the details of what it is and how to use that package. Instead, I'll show you my typical approach.
+私がお勧めする依存関係の更新方法は、[npm-check-updatesパッケージ](https://www.npmjs.com/package/npm-check-updates)を使用することです。freeCodeCampには、それに関する良い[記事](https://www.freecodecamp.org/news/how-to-update-npm-dependencies/)がありますので、パッケージの詳細な説明や使用方法については説明しません。代わりに、私の一般的なアプローチをお見せします。
 
-First, install `npm-check-updates` package globally.
+まず、`npm-check-updates`パッケージをグローバルにインストールします。
 
 ```bash
 npm install -g npm-check-updates
 ```
 
-Before making any updates, it’s a good idea to check all new dependencies that can be updated.
+更新を行う前に、更新可能な新しい依存関係をすべて確認することをお勧めします。
 
 ```bash
 ncu
 ```
 
-Most of the time, patch dependencies can be updated without affecting the project at all. So, I usually update patch dependencies by running either `ncu -i --target patch` or `ncu -u --target patch`. The difference is that `ncu -u --target patch` will update all the patches, while `ncu -i --target patch` will give an option to toggle which package to update. It’s up to you to decide which approach to take.
+ほとんどの場合、パッチ依存関係の更新はプロジェクトに全く影響を与えません。そのため、通常は`ncu -i --target patch`または`ncu -u --target patch`を実行してパッチ依存関係を更新します。`ncu -u --target patch`はすべてのパッチを更新しますが、`ncu -i --target patch`は更新するパッケージを選択するオプションを提供します。どちらのアプローチを取るかはあなた次第です。
 
-The next part involves updating minor dependencies. Minor package updates usually won't break the project, but it is always good to check the release notes of the respective packages. These minor updates often include some cool features that can be applied to our projects.
+次は、マイナー依存関係の更新です。マイナーパッケージの更新は通常プロジェクトを破壊することはありませんが、それぞれのパッケージのリリースノートを確認することをお勧めします。これらのマイナーアップデートには、プロジェクトに適用できる新機能が含まれていることがよくあります。
 
 ```bash
 ncu -i --target minor
 ```
 
-Last but not least, there might be some major package updates in the dependencies. So, check the rest of the dependency updates by running
+最後に、依存関係にメジャーなパッケージ更新がある可能性があります。残りの依存関係の更新を確認するには、以下を実行します：
 
 ```bash
 ncu -i
 ```
 
-If there are any major updates (or some updates you still have to make), the above command will output those remaining packages. If the package is a major version update, you have to be very careful since this will likely break the whole project. Therefore, please read the respective release note (or) docs very carefully and make changes accordingly.
+メジャーバージョンの更新がある場合（または他に更新が必要な場合）、上記のコマンドは残りのパッケージを出力します。パッケージがメジャーバージョンの更新の場合、プロジェクト全体が破損する可能性が高いため、非常に注意が必要です。したがって、それぞれのリリースノート（または）ドキュメントを注意深く読み、それに応じて変更を加えてください。
 
-If you run `ncu -i` and found no more packages to be updated, _**Congrats!!!**_ you have successfully updated all the dependencies in your project.
+`ncu -i`を実行して更新するパッケージが見つからない場合、_**おめでとう!!!**_ プロジェクト内のすべての依存関係の更新に成功しました。
 
-## Updating AstroPaper template
+## AstroPaperテンプレートの更新
 
-Like other open-source projects, AstroPaper is evolving with bug fixes, feature updates, and so on. So if you’re someone who is using AstroPaper as a template, you might also want to update the template when there’s a new release.
+他のオープンソースプロジェクトと同様、AstroPaperもバグ修正や機能更新などで進化しています。AstroPaperをテンプレートとして使用している場合、新しいリリースがあったときにテンプレートを更新したいと思うかもしれません。
 
-The thing is, you might already have updated the template according to your flavor. Therefore, I can’t exactly show **"the one-size-fits-all perfect way"** to update the template to the most recent release. However, here are some tips to update the template without breaking your repo. Keep in mind that, most of the time, updating the package dependencies might be sufficient for you.
+すでにテンプレートを自分の好みに合わせて更新している可能性があるため、テンプレートを最新のリリースに更新する**「万能な完璧な方法」**を正確に示すことはできません。ただし、リポジトリを壊すことなくテンプレートを更新するためのヒントをいくつか紹介します。ほとんどの場合、パッケージの依存関係を更新するだけで十分かもしれないことを覚えておいてください。
 
-### Files and Directories to keep in mind
+### 注意すべきファイルとディレクトリ
 
-In most cases, the files and directories you might not want to override (as you've likely updated those files) are `src/content/blog/`, `src/config.ts`, `src/pages/about.md`, and other assets & styles like `public/` and `src/styles/base.css`.
+ほとんどの場合、上書きしたくないファイルとディレクトリ（おそらくすでに更新済み）は、`src/content/blog/`、`src/config.ts`、`src/pages/about.md`、その他のアセットやスタイル（`public/`や`src/styles/base.css`など）です。
 
-If you’re someone who only updates the bare minimum of the template, it should be okay to replace everything with the latest AstroPaper except the above files and directories. It’s like pure Android OS and other vendor-specific OSes like OneUI. The less you modify the base, the less you have to update.
+テンプレートの最小限の更新のみを行っている場合は、上記のファイルとディレクトリを除いて、すべてを最新のAstroPaperに置き換えても問題ないはずです。これは、ピュアなAndroid OSと、OneUIのようなベンダー固有のOSの関係に似ています。ベースの修正が少ないほど、更新する必要が少なくなります。
 
-You can manually replace every file one by one, or you can use the magic of git to update everything. I won’t show you the manual replacement process since it is very straightforward. If you’re not interested in that straightfoward and inefficient method, bear with me 🐻.
+ファイルを1つずつ手動で置き換えるか、gitの魔法を使用してすべてを更新することができます。手動での置き換え方法は非常に単純なので、ここでは説明しません。この単純で非効率的な方法に興味がない場合は、私についてきてください🐻。
 
-### Updating AstroPaper using Git
+### Gitを使用したAstroPaperの更新
 
-**IMPORTANT!!!**
+**重要!!!**
 
-> Only do the following if you know how to resolve merge conflicts. Otherwise, you’d better replace files manually or update dependencies only.
+> マージの競合を解決する方法を知っている場合のみ、以下の操作を行ってください。そうでない場合は、手動でファイルを置き換えるか、依存関係の更新のみを行うことをお勧めします。
 
-First, add astro-paper as the remote in your project.
+まず、プロジェクトにastro-paperをリモートとして追加します。
 
 ```bash
 git remote add astro-paper https://github.com/satnaing/astro-paper.git
 ```
 
-Checkout to a new branch in order to update the template. If you know what you’re doing and you’re confident with your git skill, you can omit this step.
+テンプレートを更新するために新しいブランチをチェックアウトします。gitの使用に慣れていて自信がある場合は、このステップを省略できます。
 
 ```bash
 git checkout -b build/update-astro-paper
 ```
 
-Then, pull the changes from astro-paper by running
+次に、以下を実行してastro-paperから変更を取得します：
 
 ```bash
 git pull astro-paper main
 ```
 
-If you face `fatal: refusing to merge unrelated histories` error, you can resolve that by running the following command
+`fatal: refusing to merge unrelated histories`エラーが発生した場合は、以下のコマンドを実行して解決できます：
 
 ```bash
 git pull astro-paper main --allow-unrelated-histories
 ```
 
-After running the above command, you’re likely to encounter conflicts in your project. You'll need to resolve these conflicts manually and make the necessary adjustments according to your needs.
+上記のコマンドを実行すると、プロジェクトで競合が発生する可能性が高いです。これらの競合を手動で解決し、必要に応じて調整する必要があります。
 
-After resolving the conflicts, test your blog thoroughly to ensure everything is working as expected. Check your articles, components, and any customizations you made.
+競合を解決した後、ブログが期待通りに動作することを確認するために、徹底的にテストしてください。記事、コンポーネント、およびカスタマイズした部分をチェックしてください。
 
-Once you're satisfied with the result, it's time to merge the update branch into your main branch (only if you are updating the template in another branch). Congratulations! You've successfully updated your template to the latest version. Your blog is now up-to-date and ready to shine! 🎉
+結果に満足したら、更新ブランチをメインブランチにマージする時期です（別のブランチでテンプレートを更新している場合のみ）。おめでとうございます！テンプレートを最新バージョンに更新することに成功しました。これでブログは最新の状態になり、輝く準備が整いました！🎉
 
-## Conclusion
+## 結論
 
-In this article, I've shared some of my insights and processes for updating dependencies and the AstroPaper template. I genuinely hope this article proves valuable and assists you in managing your projects more efficiently.
+この記事では、依存関係とAstroPaperテンプレートの更新に関する私の洞察とプロセスを共有しました。この記事が価値あるものとなり、プロジェクトをより効率的に管理するのに役立つことを心から願っています。
 
-If you have any alternative or improved approaches for updating dependencies/AstroPaper, I would love to hear from you. Thus, don't hesitate to start a discussion in the repository, email me, or open an issue. Your input and ideas are highly appreciated!
+依存関係/AstroPaperの更新について、代替的なアプローチや改善案がありましたら、ぜひお聞かせください。リポジトリでディスカッションを開始するか、メールを送信するか、イシューを開いてください。あなたの意見やアイデアを大切にしています！
 
-Please understand that my schedule is quite busy these days, and I may not be able to respond quickly. However, I promise to get back to you as soon as possible. 😬
+現在、私のスケジュールは非常に忙しく、すぐに返信できない場合があることをご理解ください。ただし、できるだけ早くご返信することをお約束します。😬
 
-Thank you for taking the time to read this article, and I wish you all the best with your projects!
+この記事を読んでいただきありがとうございます。あなたのプロジェクトが成功することを願っています！

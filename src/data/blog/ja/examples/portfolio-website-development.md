@@ -1,5 +1,5 @@
 ---
-title: How Do I Develop My Portfolio Website & Blog
+title: ポートフォリオウェブサイトとブログの開発方法
 author: Sat Naing
 pubDatetime: 2022-03-25T16:55:12.000+00:00
 slug: ja/how-do-i-develop-my-portfolio-and-blog
@@ -10,96 +10,94 @@ tags:
   - TailwindCSS
   - HeadlessCMS
   - Blog
-description:
-  "EXAMPLE POST: My experience about developing my first portfolio website and a blog
-  using NextJS and a headless CMS."
+description: "サンプル記事：NextJSとヘッドレスCMSを使用して初めてのポートフォリオウェブサイトとブログを開発した経験について。"
 timezone: "Asia/Yangon"
 ---
 
-> This article is originally from my [blog post](https://satnaing.dev/blog/posts/how-do-i-develop-my-portfolio-and-blog). I put this article to demonstrate how you can write blog posts/articles using AstroPaper theme.
+> この記事は私の[ブログ記事](https://satnaing.dev/blog/posts/how-do-i-develop-my-portfolio-and-blog)から転載したものです。AstroPaperテーマを使用してブログ記事を書く方法を説明するために掲載しています。
 
-My experience about developing my first portfolio website and a blog using NextJS and a headless CMS.
+NextJSとヘッドレスCMSを使用して初めてのポートフォリオウェブサイトとブログを開発した経験について。
 
-![Building portfolio](https://satnaing.dev/_ipx/w_2048,q_75/https%3A%2F%2Fres.cloudinary.com%2Fnoezectz%2Fimage%2Fupload%2Fv1653050141%2FSatNaing%2Fblog_at_cafe_ei1wf4.jpg?url=https%3A%2F%2Fres.cloudinary.com%2Fnoezectz%2Fimage%2Fupload%2Fv1653050141%2FSatNaing%2Fblog_at_cafe_ei1wf4.jpg&w=2048&q=75)
+![ポートフォリオの構築](https://satnaing.dev/_ipx/w_2048,q_75/https%3A%2F%2Fres.cloudinary.com%2Fnoezectz%2Fimage%2Fupload%2Fv1653050141%2FSatNaing%2Fblog_at_cafe_ei1wf4.jpg?url=https%3A%2F%2Fres.cloudinary.com%2Fnoezectz%2Fimage%2Fupload%2Fv1653050141%2FSatNaing%2Fblog_at_cafe_ei1wf4.jpg&w=2048&q=75)
 
-## Motivation
+## モチベーション
 
-I've been always thinking about launching my own website with my custom domain name (**satnaing.dev**) since my college student life. But that never happened until this project. I've done several projects and works about web application development but I didn't make an effort to do this.
+大学生の頃から、自分のドメイン名(**satnaing.dev**)で独自のウェブサイトを立ち上げることを考えていました。しかし、このプロジェクトまでそれは実現しませんでした。ウェブアプリケーション開発に関する複数のプロジェクトや作業を行ってきましたが、これに取り組む努力はしていませんでした。
 
-So, "what about blog?" you may ask. Yeah, blog also has been in my project list for some time. I always wanted to make a blog project using some of the latest technologies. However, I've been busy with my works and other projects so that blog project has never been started.
+では、「ブログはどうなの？」と聞かれるかもしれません。はい、ブログも以前からプロジェクトリストに入っていました。最新のテクノロジーを使用してブログプロジェクトを作りたいと常に考えていました。しかし、仕事や他のプロジェクトで忙しく、ブログプロジェクトを始めることができませんでした。
 
-In these days, I tend to develop my own projects with the focus in good quality rather than quantity. After the project is done, I usually put a proper readme file in the Github repo. But Github repo readme is only suitable for technical aspects (this is just my thought). I want to write down my experiences and challenges. Thus, I decided to make my own blog. Plus, at this point, I have decent experiences and confidence to develop this project.
+最近では、量より質を重視して自分のプロジェクトを開発する傾向があります。プロジェクト完了後は、通常GitHubリポジトリに適切なreadmeファイルを配置します。しかし、GitHubリポジトリのreadmeは技術的な側面にのみ適していると考えています。経験や課題について書き留めたいと思い、自分のブログを作ることを決めました。さらに、この時点で、このプロジェクトを開発するための十分な経験と自信がありました。
 
-## Tech Stack
+## 技術スタック
 
-For the front-end, I wanted to use [React](https://reactjs.org/ "React Official Website"). But React alone is not good enough for SEO; and I did have to consider many factors like routing, image optimization etc. So, I chose [NextJS](https://nextjs.org/ "NextJS Official Website") as my main front-end stack. And of course TypeScript for type checking. (It's said that you'll love TypeScript when you're used to it 😉)
+フロントエンドには、[React](https://reactjs.org/ "React公式ウェブサイト")を使用したいと考えていました。しかし、ReactだけではSEOには不十分でした。また、ルーティングや画像の最適化など、多くの要因を考慮する必要がありました。そこで、メインのフロントエンドスタックとして[NextJS](https://nextjs.org/ "NextJS公式ウェブサイト")を選択しました。そしてもちろん、型チェックのためにTypeScriptを使用しています（慣れると TypeScriptが好きになると言われています😉）。
 
-For styling, I use [TailwindCSS](https://tailwindcss.com/ "Tailwind CSS Official Website"). This is because I love developer experience that Tailwind gives and it has a lot of flexibilities compared to other component UI libraries like MUI or React Bootstrap.
+スタイリングには、[TailwindCSS](https://tailwindcss.com/ "Tailwind CSS公式ウェブサイト")を使用しています。これは、Tailwindが提供する開発者体験が気に入っているためと、MUIやReact Bootstrapなどの他のコンポーネントUIライブラリと比較して柔軟性が高いためです。
 
-All contents of this project reside within the GitHub repository. All my blog posts (including this one) are written in Markdown file format since I'm very used to with this. But to write Markdown along with its frontmatter effortlessly, I use [Forestry](https://forestry.io/ "Forestry Official Website") headless CMS. It is a git-based CMS that can serve Markdown and other contents. Because of this, I can write my contents either using Markdown or wysiwyg editor. Besides, writing frontmatters with this is a breeze.
+このプロジェクトのすべてのコンテンツはGitHubリポジトリに保存されています。私はMarkdown形式に慣れているため、このブログ記事を含むすべての投稿はMarkdownファイル形式で書かれています。しかし、frontmatterを含むMarkdownを簡単に書くために、[Forestry](https://forestry.io/ "Forestry公式ウェブサイト")ヘッドレスCMSを使用しています。これはMarkdownやその他のコンテンツを提供できるGitベースのCMSです。これにより、Markdownまたはwysiwygエディタのいずれかを使用してコンテンツを書くことができます。また、frontmattersの作成も簡単です。
 
-Images and assets are uploaded and stored in [Cloudinary](https://cloudinary.com/ "Cloudinary Official Website"). I connect Cloudinary via Forestry and manage them directly in the dashboard.
+画像やアセットは[Cloudinary](https://cloudinary.com/ "Cloudinary公式ウェブサイト")にアップロードして保存しています。ForestryからCloudinaryに接続し、ダッシュボードで直接管理しています。
 
-In conclusion, these are the tech stack I've used for this project.
+結論として、このプロジェクトで使用した技術スタックは以下の通りです：
 
-- Front-end: NextJS (TypeScript)
-- Styling: TailwindCSS
-- Animations: GSAP
-- CMS: Forestry Headless CMS
-- Deployment: Vercel
+- フロントエンド：NextJS (TypeScript)
+- スタイリング：TailwindCSS
+- アニメーション：GSAP
+- CMS：Forestry Headless CMS
+- デプロイメント：Vercel
 
-## Features
+## 機能
 
-The following are certain features of my portfolio and blog
+私のポートフォリオとブログの主な機能は以下の通りです：
 
-### SEO Friendly
+### SEOフレンドリー
 
-The entire project is developed with SEO focus in mind. I've used proper meta tags, descriptions and heading alignments. This website is now indexed by Google.
+プロジェクト全体がSEOを念頭に置いて開発されています。適切なメタタグ、説明、見出しの配置を使用しています。このウェブサイトは現在Googleにインデックスされています。
 
-> You can search this website on google by using keywords like 'sat naing dev'
+> 'sat naing dev'などのキーワードを使用してGoogleでこのウェブサイトを検索できます
 
-![searching satnaing.dev on google](https://res.cloudinary.com/noezectz/image/upload/v1648231400/SatNaing/satnaing-on-google_asflq6.png "satnaing.dev is indexed")
+![Googleでsatnaing.devを検索](https://res.cloudinary.com/noezectz/image/upload/v1648231400/SatNaing/satnaing-on-google_asflq6.png "satnaing.devはインデックスされています")
 
-Moreover, this website will be displayed well when shared to social media due to properly used meta tags.
+さらに、適切なメタタグを使用しているため、ソーシャルメディアで共有した際にもこのウェブサイトは適切に表示されます。
 
-![satnaing.dev card layout when shared to Facebook](https://res.cloudinary.com/noezectz/image/upload/v1653106955/SatNaing/satnaing-dev-share-on-facebook_1_zjoehx.png "Card layout when shared to Facebook")
+![Facebookで共有した際のsatnaing.devのカードレイアウト](https://res.cloudinary.com/noezectz/image/upload/v1653106955/SatNaing/satnaing-dev-share-on-facebook_1_zjoehx.png "Facebookで共有した際のカードレイアウト")
 
-### Dynamic Sitemap
+### 動的サイトマップ
 
-Sitemap plays an important part in SEO. Because of this, every single page of this site should be included in sitemap.xml. I made an auto generated sitemap in my website whenever I create a new content or tags or categories.
+サイトマップはSEOにおいて重要な役割を果たします。そのため、このサイトのすべてのページはsitemap.xmlに含まれている必要があります。新しいコンテンツやタグ、カテゴリーを作成するたびに自動生成されるサイトマップを実装しました。
 
-### Light & Dark Themes
+### ライト＆ダークテーマ
 
-Due to dark theme trend in recent years, many websites include dark theme out of the box nowadays. Certainly, my website also supports light & dark themes.
+近年のダークテームのトレンドにより、多くのウェブサイトがダークテーマをデフォルトで提供しています。もちろん、私のウェブサイトもライトテーマとダークテーマの両方をサポートしています。
 
-### Fully Accessible
+### 完全なアクセシビリティ
 
-This website is fully accessible. You can navigate around by only using keyboard. I put all a11y enhancement best practices like including alt text in all images, no skipping headings, using semantic HTML tags, using aria-attributes properly.
+このウェブサイトは完全にアクセシブルです。キーボードのみで操作することができます。すべての画像に代替テキストを含める、見出しをスキップしない、セマンティックなHTMLタグを使用する、aria属性を適切に使用するなど、すべてのa11y改善のベストプラクティスを実装しています。
 
-### Search box, Categories & Tags
+### 検索ボックス、カテゴリー＆タグ
 
-All blog contents can be searched by search box. Moreover, contents can be filtered by categories and tags. In this way, blog readers can search and read what they really want.
+すべてのブログコンテンツは検索ボックスで検索できます。さらに、コンテンツはカテゴリーとタグでフィルタリングできます。これにより、ブログ読者は自分が本当に読みたいものを検索して読むことができます。
 
-### Performance and Lighthouse Score
+### パフォーマンスとLighthouseスコア
 
-This website got very good performance and lighthouse score thanks to proper development and best practices. Here's the lighthouse score for this website.
+適切な開発とベストプラクティスのおかげで、このウェブサイトは非常に良いパフォーマンスとLighthouseスコアを獲得しています。以下がこのウェブサイトのLighthouseスコアです。
 
-![satnaing.dev Lighthouse score](https://user-images.githubusercontent.com/53733092/159957822-7082e459-11e9-4616-8f1e-49d0881f7cbb.png "satnaing.dev Lighthouse score")
+![satnaing.devのLighthouseスコア](https://user-images.githubusercontent.com/53733092/159957822-7082e459-11e9-4616-8f1e-49d0881f7cbb.png "satnaing.devのLighthouseスコア")
 
-### Animations
+### アニメーション
 
-Initially I used [Framer Motion](https://www.framer.com/motion/ "Framer Motion") to add animations and micro interactions for this website. However, when I tried to use some complex animations and parallax effects, I found it inconvenient to integrate with Framer Motion (Maybe I'm not very good at and used to working with it). Hence, I decided to use [GSAP](https://greensock.com/ "GSAP Animation Library") for all of my animations. It is one of the most popular animation library and it is capable of doing complex and advanced animations. You can see animations and micro interactions on pretty much every page of this website.
+当初、このウェブサイトのアニメーションとマイクロインタラクションには[Framer Motion](https://www.framer.com/motion/ "Framer Motion")を使用していました。しかし、複雑なアニメーションやパララックス効果を試みた際に、Framer Motionとの統合が不便だと感じました（おそらく私がそれに熟練していなかったためです）。そこで、すべてのアニメーションに[GSAP](https://greensock.com/ "GSAPアニメーションライブラリ")を使用することにしました。これは最も人気のあるアニメーションライブラリの1つで、複雑で高度なアニメーションを実現できます。このウェブサイトのほぼすべてのページでアニメーションとマイクロインタラクションを見ることができます。
 
-![animations at satnaing.dev](https://res.cloudinary.com/noezectz/image/upload/v1653108324/SatNaing/ezgif.com-gif-maker_2_hehtlm.gif "satnaing.dev website")
+![satnaing.devのアニメーション](https://res.cloudinary.com/noezectz/image/upload/v1653108324/SatNaing/ezgif.com-gif-maker_2_hehtlm.gif "satnaing.devウェブサイト")
 
-## Outro
+## おわりに
 
-In conclusion, this project gives me a lot of experience and confidence about developing blog site (SSG). Now, I have gained knowledge of git-based CMS and how it interacts with NextJS. I've also learned about SEO, dynamic sitemap generation and indexing Google procedures. I will make better projects in the future. So, stay tuned! ✌🏻
+結論として、このプロジェクトはブログサイト（SSG）の開発について多くの経験と自信を与えてくれました。GitベースのCMSとNextJSとの連携について知識を得ることができました。また、SEO、動的サイトマップ生成、Googleインデックス手順についても学びました。今後さらに良いプロジェクトを作っていきます。ご期待ください！ ✌🏻
 
-And... last but not least, I would like to say 'thanks' to my friend [Swann Fevian Kyaw](https://www.facebook.com/bon.zai.3910 "Swann Fevian Kyaw's Facebook Account") (@[ToonHa](https://www.facebook.com/ToonHa-102639465752883 "ToonHa Facebook Page")) who has drawn a beautiful illustration for my hero section of the website.
+そして...最後に、ウェブサイトのヒーローセクションに美しいイラストを描いてくれた友人の[Swann Fevian Kyaw](https://www.facebook.com/bon.zai.3910 "Swann Fevian Kyawのフェイスブックアカウント")（@[ToonHa](https://www.facebook.com/ToonHa-102639465752883 "ToonHaフェイスブックページ")）に感謝を述べたいと思います。
 
-## Project Links
+## プロジェクトリンク
 
-- Website: [https://satnaing.dev/](https://satnaing.dev/ "https://satnaing.dev/")
-- Blog: [https://satnaing.dev/blog](https://satnaing.dev/blog "https://satnaing.dev/blog")
-- Repo: [https://github.com/satnaing/my-portfolio](https://github.com/satnaing/my-portfolio "https://github.com/satnaing/my-portfolio")
+- ウェブサイト：[https://satnaing.dev/](https://satnaing.dev/ "https://satnaing.dev/")
+- ブログ：[https://satnaing.dev/blog](https://satnaing.dev/blog "https://satnaing.dev/blog")
+- リポジトリ：[https://github.com/satnaing/my-portfolio](https://github.com/satnaing/my-portfolio "https://github.com/satnaing/my-portfolio")
